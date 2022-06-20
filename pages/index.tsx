@@ -1,17 +1,20 @@
+import dynamic from "next/dynamic";
 import NextLink from "next/link";
-import { PhoneIcon } from "@heroicons/react/outline";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
-
-import Rating from "@components/rating";
-import RatingBars from "@components/rating-bars";
-import Player from "@components/player";
-import Layout from "@components/layout";
-import Button from "@components/button";
-import Drawer from "@components/drawer";
+import { PhoneIcon } from "@heroicons/react/outline";
 
 import { REVIEWS } from "data/reviews";
 import { TESTIMONIALS } from "data/testimonials";
 import { SERVICES } from "data/services";
+
+import Rating from "@components/rating";
+import RatingBars from "@components/rating-bars";
+import Layout from "@components/layout";
+import Button from "@components/button";
+import Drawer from "@components/drawer";
+import VideoDialog from "@components/video-dialog";
+
+const Player = dynamic(() => import("@components/player"));
 
 export default function Home() {
   return (
@@ -101,6 +104,7 @@ export default function Home() {
             </motion.div>
             <div className="aspect-w-16 aspect-h-9 my-16 overflow-hidden rounded-lg bg-blue-300">
               <Player
+                light
                 url="https://res.cloudinary.com/dsvfol2fs/video/upload/v1655228145/Metal_Wind_Chimes_at_Sunset.mp4"
                 cover="/video-capture-9817.png"
               />
@@ -317,12 +321,20 @@ export default function Home() {
           <div className="grid gap-x-10 gap-y-8 md:grid-cols-3">
             {TESTIMONIALS.map((x, i) => (
               <div key={i} className={x.video.extended ? "md:col-span-2" : ""}>
-                <div className="h-[350px] overflow-hidden rounded-3xl bg-blue-300">
-                  <Player url={x.video.src} cover={x.video.cover.src} />
+                <div className="relative h-[350px] overflow-hidden rounded-3xl bg-blue-300">
+                  <VideoDialog src={x.video.src} cover={x.video.cover.src} />
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={x.video.cover.src}
+                    alt="cover img"
+                    className="h-full w-full object-cover"
+                  />
                 </div>
                 <h4 className="mt-4">{x.title}</h4>
               </div>
             ))}
+
+            {/*  */}
           </div>
           <div className="mt-6 flex items-center  justify-center">
             <Button variant="outlined">Load More</Button>

@@ -1,24 +1,40 @@
-import dynamic from "next/dynamic";
 import { PlayIcon } from "@heroicons/react/solid";
-import { useState } from "react";
+import dynamic from "next/dynamic";
+import { useEffect, useState } from "react";
 const ReactPlayer = dynamic(() => import("react-player/file"), { ssr: false });
 
-const Player = ({ url, cover }: { url: string; cover: string }) => {
-  const [isPlaying, setPlay] = useState(false);
+const Player = ({
+  light = false,
+  url,
+  cover,
+}: {
+  light?: boolean;
+  url: string;
+  cover: string;
+}) => {
+  const [shouldPlay, setShouldPlay] = useState(false);
 
-  const play = () => setPlay(true);
+  useEffect(() => {
+    setShouldPlay(true);
+  }, []);
 
   return (
     <ReactPlayer
-      url={url}
-      light={cover}
-      playing={isPlaying}
+      playing={shouldPlay}
+      light={light ? cover : false}
       playIcon={
-        <PlayIcon className="w-20 h-20 text-black opacity-20" onClick={play} />
+        <PlayIcon className=" z-20 h-20 w-20 cursor-pointer text-black opacity-50 duration-200 hover:scale-110" />
       }
+      url={url}
+      config={{
+        attributes: {
+          poster: cover,
+        },
+      }}
       height={"100%"}
       width={"100%"}
       style={{ objectFit: "cover" }}
+      controls
     />
   );
 };
