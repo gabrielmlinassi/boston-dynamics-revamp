@@ -1,4 +1,5 @@
 import { StarIcon } from "@heroicons/react/solid";
+import { motion } from "framer-motion";
 
 type RatingBarsProps = {
   ratings: [number, number, number, number, number];
@@ -11,12 +12,14 @@ const RatingBars = ({ ratings }: RatingBarsProps) => {
   for (let i = 0; i < 5; i++) {
     const qty = Math.round(100 * (ratings[i] / total));
     result.push(
-      <div key={i} className="flex gap-2 items-center">
-        <span className="font-Inter text-blue-500 font-bold">{i + 1}</span>
-        <StarIcon className="w-5 h-5 text-yellow-400" />
-        <div className="relative grow w-full h-3 rounded-[4px] bg-blue-300">
-          <div
-            style={{ width: `${qty}%` }}
+      <div key={i} className="flex items-center gap-2">
+        <span className="font-Inter font-bold text-blue-500">{i + 1}</span>
+        <StarIcon className="text-yellow-400 h-5 w-5" />
+        <div className="relative h-3 w-full grow rounded-[4px] bg-blue-300">
+          <motion.div
+            initial={{ width: 0 }}
+            whileInView={{ width: `${qty}%` }}
+            viewport={{ once: true }}
             className="absolute left-0 top-0 bottom-0 rounded-[4px] bg-blue-500"
           />
         </div>

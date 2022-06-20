@@ -11,6 +11,7 @@ module.exports = {
     colors: {
       transparent: "transparent",
       white: "#fff",
+      "white.hover": darken(0.15, "#fff"),
       blue: {
         300: "#c1ddee",
         "300.hover": darken(0.05, "#c1ddee"),
