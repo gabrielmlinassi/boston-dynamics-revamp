@@ -1,0 +1,11 @@
+.trigger {
+  @apply ml-12 rounded-lg bg-blue-300 py-3 px-6 font-bold text-blue-500 duration-150 hover:bg-blue-300.hover;
+}
+
+.overlay {
+  @apply fixed inset-0 z-20 bg-black bg-opacity-25 rdx-state-open:animate-fade-in rdx-state-closed:animate-fade-out;
+}
+
+.content {
+  @apply fixed right-0 top-0 bottom-0 z-50 flex max-w-[650px] flex-col gap-12 overflow-y-auto bg-blue-500 px-5 py-10 rdx-state-open:animate-drawer-slide-in rdx-state-closed:animate-drawer-hide md:py-14 md:px-16;
+}

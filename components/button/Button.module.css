@@ -1,0 +1,43 @@
+/**
+ *
+ * VARIANTS
+ */
+.base {
+  @apply flex items-center justify-center gap-2 rounded-lg;
+}
+
+.filled {
+  @apply bg-blue-300 font-bold text-blue-500 outline-none duration-200 hover:bg-blue-300.hover focus:ring focus:ring-blue-300.active focus:ring-offset-2;
+}
+
+.outlined {
+  @apply border border-blue-500 bg-right-top text-blue-500 duration-300 hover:bg-blue-500 hover:bg-opacity-5;
+}
+
+.subtle {
+  @apply bg-transparent outline-none duration-200 hover:bg-black hover:bg-opacity-5 focus:bg-black focus:bg-opacity-5 focus:ring focus:ring-black focus:ring-opacity-30 focus:ring-offset-2 rdx-state-open:bg-black rdx-state-open:bg-opacity-5;
+}
+
+/**
+ *
+ * SIZES
+ */
+.xs {
+  @apply py-1 px-3;
+}
+
+.sm {
+  @apply py-3 px-5 text-base;
+}
+
+.md {
+  @apply py-4 px-8 text-xl;
+}
+
+.sm .icon {
+  @apply h-4 w-4;
+}
+
+.md .icon {
+  @apply h-14 w-14;
+}

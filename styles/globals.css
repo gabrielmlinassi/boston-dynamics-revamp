@@ -1,16 +1,59 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply font-NewYork text-[40px] font-bold md:text-[80px];
+  }
+
+  h2 {
+    @apply font-NewYork text-[53px] leading-tight;
+  }
+
+  h3 {
+    @apply font-NewYork text-[32px];
+  }
+
+  h4 {
+    @apply font-NewYork text-[26px] leading-tight;
+  }
+
+  p,
+  li {
+    @apply font-Inter text-[16px];
+  }
+
+  a {
+    @apply font-Inter;
+  }
+
+  button {
+    /* Disables tap highlight color on Chrome */
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  @font-face {
+    font-family: "NewYorkExtraLarge";
+    src: url("/fonts/NewYorkExtraLargeRegular.otf") format("opentype");
+    font-weight: 500;
+    font-style: normal;
+  }
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@layer components {
+  .fancy-underline {
+    position: relative;
+    z-index: 1;
+  }
 
-* {
-  box-sizing: border-box;
+  .fancy-underline::before {
+    content: "";
+    @apply absolute bottom-0 left-0 -z-10 h-[4px] w-full bg-blue-400;
+  }
+
+  .fancy-underline.--thin::before {
+    @apply h-[2px];
+  }
+  /* ... */
 }
