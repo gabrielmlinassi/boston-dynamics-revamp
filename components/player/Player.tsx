@@ -29,10 +29,15 @@ const Player = ({
       config={{
         attributes: {
           poster: cover,
+          style: {
+            objectFit: "cover",
+            height: "100%",
+            width: "100%",
+          },
         },
       }}
-      height={"100%"}
-      width={"100%"}
+      height="100%"
+      width="100%"
       style={{ objectFit: "cover" }}
       controls
     />

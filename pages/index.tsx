@@ -23,6 +23,7 @@ export default function Home() {
         <motion.div
           initial={{ opacity: 0, y: 25 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           className="flex h-[500px] items-center justify-center p-5 md:h-[700px] md:p-0"
         >
           <div className="max-w-[950px]">
@@ -321,14 +322,19 @@ export default function Home() {
           <div className="grid gap-x-10 gap-y-8 md:grid-cols-3">
             {TESTIMONIALS.map((x, i) => (
               <div key={i} className={x.video.extended ? "md:col-span-2" : ""}>
-                <div className="relative h-[350px] overflow-hidden rounded-3xl bg-blue-300">
-                  <VideoDialog src={x.video.src} cover={x.video.cover.src} />
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={x.video.cover.src}
-                    alt="cover img"
-                    className="h-full w-full object-cover"
-                  />
+                <div className="h-[350px] overflow-hidden rounded-3xl bg-blue-300">
+                  <div className="relative hidden h-full w-full md:block">
+                    <VideoDialog src={x.video.src} cover={x.video.cover.src} />
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={x.video.cover.src}
+                      alt="cover img"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                  <div className="block h-full w-full md:hidden">
+                    <Player url={x.video.src} cover={x.video.cover.src} light />
+                  </div>
                 </div>
                 <h4 className="mt-4">{x.title}</h4>
               </div>
