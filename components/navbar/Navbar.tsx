@@ -40,12 +40,12 @@ const Navbar = () => {
               },
             ]}
           />
-          <NextLink href="/test" passHref>
+          <NextLink href="#reviews" passHref>
             <Button variant="subtle" asChild>
               <a>Reviews</a>
             </Button>
           </NextLink>
-          <NextLink href="/test" passHref>
+          <NextLink href="#about" passHref>
             <Button variant="subtle" asChild>
               <a>About</a>
             </Button>

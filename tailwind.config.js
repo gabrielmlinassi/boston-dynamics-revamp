@@ -17,6 +17,7 @@ module.exports = {
         "300.hover": darken(0.05, "#c1ddee"),
         "300.active": darken(0.2, "#c1ddee"),
         400: "#83bcdc",
+        "400-darker": darken(0.03, "#83bcdc"),
         500: "#2d466c",
       },
       black: "#0e0f10",

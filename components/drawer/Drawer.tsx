@@ -8,6 +8,10 @@ import s from "./Drawer.module.css";
 const Drawer = ({ trigger }: { trigger: React.ReactNode }) => {
   const [isOpen, setOpen] = useState(false);
 
+  function onClick() {
+    document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape" }));
+  }
+
   return (
     <DialogPrimitive.Root open={isOpen} onOpenChange={setOpen}>
       <DialogPrimitive.Trigger asChild>{trigger}</DialogPrimitive.Trigger>
@@ -68,12 +72,15 @@ const Drawer = ({ trigger }: { trigger: React.ReactNode }) => {
             </p>
           </div>
         </div>
-        <div className="ml-auto">
-          <span className="font-Inter text-white text-opacity-70">
+        <div className="ml-auto flex items-center">
+          <span className="flex-shrink-0 font-Inter text-white text-opacity-70">
             OK with you?
           </span>
-          <NextLink href="/test" passHref>
-            <a className="ml-5 rounded-lg bg-blue-400 px-5 py-3 font-Inter font-bold text-blue-500">
+          <NextLink href="/contact">
+            <a
+              onClick={onClick}
+              className="ml-5 inline-flex items-center justify-center gap-2 rounded-lg bg-blue-400 px-5 py-3 font-Inter font-bold text-blue-500 transition-all duration-200 hover:ring-2 hover:ring-white hover:ring-opacity-70 hover:ring-offset-[3px] hover:ring-offset-blue-500"
+            >
               Continue
             </a>
           </NextLink>
